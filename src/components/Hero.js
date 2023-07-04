@@ -43,7 +43,7 @@ const Hero = () => {
                     m: "2",
                   }}
                 >
-                  👋 I`&apos;m Mert Uygun software developer
+                  👋 I&apos;m Mert Uygun software developer
                 </Highlight>
               </Heading>
               <Text mt={5}>
@@ -58,7 +58,7 @@ const Hero = () => {
                 web should be clean, attractive, and engaging.
               </Text>
               <Text mt={5}>
-                I`&apos;m working as Lead Frontend Developer at{" "}
+                I&apos;m working as Lead Frontend Developer at{" "}
                 <Link href="https://coinpanel.com/">
                   <strong>CoinPanel</strong>
                 </Link>{" "}
