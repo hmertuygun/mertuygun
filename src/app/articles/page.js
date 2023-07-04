@@ -4,14 +4,14 @@ import ArticleList from "@/components/HomeBlog/ArticleList";
 import { Button, Container, Heading, Tag } from "@chakra-ui/react";
 import Link from "next/link";
 import cosmicConfig from "@/cosmic-config";
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useCallback, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 
 export default function Articles() {
   const params = useSearchParams();
   const [articles, setArticles] = useState(null);
 
-  async function getArticles() {
+  const getArticles = useCallback(async () => {
     if (params.get("tag")) {
       const { objects: data } = await cosmicConfig.objects
         .find({ type: "posts", "metadata.tags": { $in: [params.get("tag")] } })
@@ -25,13 +25,13 @@ export default function Articles() {
         .depth(1);
       return data;
     }
-  }
+  }, [params]);
 
   useEffect(() => {
     getArticles().then((articlesData) => {
       setArticles(articlesData);
     });
-  }, []);
+  }, [getArticles]);
 
   return (
     <Container maxW={"4xl"} mt={5}>
