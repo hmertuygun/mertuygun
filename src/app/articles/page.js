@@ -35,9 +35,11 @@ export default function Articles() {
 
   return (
     <Container maxW={"4xl"} mt={5}>
-      <Button as={Link} href="/" colorScheme="red" size="sm" mb={4}>
-        Go Home
-      </Button>
+      <Link href={"/"}>
+        <Button colorScheme={"red"} mb={4}>
+          Back
+        </Button>
+      </Link>
       <Heading as="h1" size="xl" mb={4}>
         Articles by me. happy reading!{" "}
         {params.get("tag") && (

@@ -40,9 +40,15 @@ const ArticleContent = ({ article }) => {
               </Link>
             ))}
           </HStack>
-          <Button my={5} as={Link} colorScheme={"blue"} href={"/articles"}>
-            See all blog posts
-          </Button>
+          <Link href={"/articles"}>
+            <Button
+              my={5}
+              colorScheme={"blue"}
+              display={{ base: "none", md: "block" }}
+            >
+              See all blog posts
+            </Button>
+          </Link>
         </Box>
         <Box
           my={{ base: 4, md: 0 }}

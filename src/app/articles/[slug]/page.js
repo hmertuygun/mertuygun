@@ -1,10 +1,8 @@
 "use client";
-import React, { Suspense, useEffect, useState } from 'react'
-import cosmicConfig from '@/cosmic-config'
-import Loading from '@/app/articles/[slug]/loading'
-import ArticleContent from '@/components/ArticleContent'
-
-// Mock function to get article data based on slug
+import React, { Suspense, useEffect, useState } from "react";
+import cosmicConfig from "@/cosmic-config";
+import Loading from "@/app/articles/[slug]/loading";
+import ArticleContent from "@/components/ArticleContent";
 
 export default function Article({ params }) {
   const [article, setArticle] = useState(null);
