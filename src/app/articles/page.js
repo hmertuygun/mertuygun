@@ -1,11 +1,12 @@
 "use client";
 
+import { useCallback, useEffect, useState } from "react";
 import ArticleList from "@/components/HomeBlog/ArticleList";
 import { Button, Container, Heading, Tag } from "@chakra-ui/react";
 import Link from "next/link";
 import cosmicConfig from "@/cosmic-config";
-import { Suspense, useCallback, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import Head from "next/head"; // Import Head from next.js
 
 export default function Articles() {
   const params = useSearchParams();
@@ -33,8 +34,45 @@ export default function Articles() {
     });
   }, [getArticles]);
 
+  const tag = params.get("tag");
+
   return (
     <Container maxW={"4xl"} mt={5}>
+      {/* Add SEO-related tags here */}
+      <Head>
+        <title>Articles {tag ? `on ${tag}` : ""} - My Site</title>
+        <meta
+          name="description"
+          content={`A list of articles written by me ${
+            tag ? `on ${tag}` : ""
+          }.`}
+        />
+        <meta name="robots" content="index, follow" />
+        {/* Optional: Add Open Graph / Twitter card metadata */}
+        <meta
+          property="og:title"
+          content={`Articles ${tag ? `on ${tag}` : ""} - Mert Uygun`}
+        />
+        <meta
+          property="og:description"
+          content={`A list of articles written by me ${
+            tag ? `on ${tag}` : ""
+          }.`}
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://mertuygun.com/articles" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content={`Articles ${tag ? `on ${tag}` : ""} - Mert Uygun`}
+        />
+        <meta
+          name="twitter:description"
+          content={`A list of articles written by me ${
+            tag ? `on ${tag}` : ""
+          }.`}
+        />
+      </Head>
       <Link href={"/"}>
         <Button colorScheme={"red"} mb={4}>
           Back
@@ -42,15 +80,13 @@ export default function Articles() {
       </Link>
       <Heading as="h1" size="xl" mb={4}>
         Articles by me. happy reading!{" "}
-        {params.get("tag") && (
+        {tag && (
           <Tag size={"xl"} p={1}>
-            #{params.get("tag")}
+            #{tag}
           </Tag>
         )}
       </Heading>
-      <Suspense fallback={<div>Loading...</div>}>
-        {articles ? <ArticleList articles={articles} /> : null}
-      </Suspense>
+      {articles ? <ArticleList articles={articles} /> : <div>Loading...</div>}
     </Container>
   );
 }
