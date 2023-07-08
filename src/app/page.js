@@ -15,8 +15,8 @@ export default function Home() {
       .find({ type: "posts" })
       .props("slug,title,metadata,published_at")
       .depth(1);
-    console.log(data);
-    return data;
+
+    return data.slice(0, 2);
   }
 
   useEffect(() => {
