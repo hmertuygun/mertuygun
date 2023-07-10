@@ -47,7 +47,6 @@ export default function Article({ params }) {
             property="og:description"
             content={article.metadata.description || ""}
           />
-          <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:title" content={article.title} />
           <meta
             name="twitter:description"

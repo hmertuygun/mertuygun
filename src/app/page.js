@@ -23,7 +23,7 @@ export default function Home() {
     getArticles().then((articlesData) => {
       setArticles(articlesData);
     });
-  }, []);
+  }, [getArticles]);
 
   return (
     <div>

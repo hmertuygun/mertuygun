@@ -38,9 +38,8 @@ export default function Articles() {
 
   return (
     <Container maxW={"4xl"} mt={5}>
-      {/* Add SEO-related tags here */}
       <Head>
-        <title>Articles {tag ? `on ${tag}` : ""} - My Site</title>
+        <title>Articles {tag ? `on ${tag}` : ""} - Mert Uygun</title>
         <meta
           name="description"
           content={`A list of articles written by me ${
@@ -48,7 +47,6 @@ export default function Articles() {
           }.`}
         />
         <meta name="robots" content="index, follow" />
-        {/* Optional: Add Open Graph / Twitter card metadata */}
         <meta
           property="og:title"
           content={`Articles ${tag ? `on ${tag}` : ""} - Mert Uygun`}
